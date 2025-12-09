@@ -42,13 +42,22 @@ class ProductController extends Controller
             'description' => 'nullable|string|max:1000',
             'price' => 'required|integer|min:0',
             'stock' => 'required|integer|min:0',
-        ], [
+            // 'email' => 'required|email' // @gmail.com,
+            // 'avatar' => 'required|images|mimes:jpeg,png,jpg,gid|max:2048',
+            // 'status' => 'required|in:draft,published',
+            // 'tags' => 'required|array|min:1|max:10',
+            // 'password' => 'required|string|min:8|confirmed',
+        ], 
+        // custom message -> mengganti value (name is )
+        [
             'name.required' => 'Nama Produk harus diisi',
             'name.min' => 'Nama Produk minimal 3 karakter',
             'price.required' => 'Harga produk harus diisi',
             'stock.required' => 'Stock produk harus diisi',
+            // 'password.confirmed' => 'Password tidak sesuai'
         ]);
         // simpan ke database
+        // create product -> submit -> validasi -> gak akan simpan datanya (message error) -> gak akan simpan data -> rusak database jika dipaksa masuk
         $product = Product::create($validated);
         // return response
 

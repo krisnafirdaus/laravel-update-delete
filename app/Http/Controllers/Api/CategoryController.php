@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use App\Exceptions\BusinessException;
 
 class CategoryController extends Controller
 {
@@ -139,10 +140,7 @@ class CategoryController extends Controller
     {
         if($category->posts()->count() > 0)
         {
-            return response()->json([
-                'success' => true,
-                'message' => 'Kategori tidak dapat dihapus karena masih memiliki data posts'
-            ], 422);
+           throw new BusinessException();
         }
 
         $categoryName = $category->name;
