@@ -63,7 +63,7 @@ class Post extends Model
 
     public function publish(): void
     {
-        $this->updated([
+        $this->update([
             'status' => 'published',
             'published_at' => now()
         ]);

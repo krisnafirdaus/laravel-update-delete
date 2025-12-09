@@ -20,7 +20,7 @@ class NoSpam implements ValidationRule
 
         foreach ($this->spamWords as $spam){
             if(str_contains($lowerValue, $spam)){ // viagra == viagra -> true
-                $fail("The attributes contains prohibited content.");
+                $fail("The $attribute contains prohibited content.");
                 return;
             }
         }

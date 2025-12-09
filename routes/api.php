@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\PostController;
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
@@ -19,6 +20,8 @@ Route::delete('/products/{id}/force', [ProductController::class, 'forceDelete'])
 
 Route::prefix('v1')->group(function () {
     Route::apiResource('categories', CategoryController::class);
+    Route::apiResource('posts', PostController::class);
+    Route::post('posts/{post}/publish', [PostController::class, 'publish']);
 });
 
 
