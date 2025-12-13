@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(UserSeeder::class);
+
         $categories = Category::factory(5)->create();
 
         foreach ($categories as $category){
